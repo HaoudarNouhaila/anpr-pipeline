@@ -39,3 +39,6 @@ mlruns/
 # OS
 .DS_Store
 Thumbs.db
+
+# Fichiers de travail
+docs/*_preview.json
