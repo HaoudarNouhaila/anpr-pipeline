@@ -1,0 +1,37 @@
+# Configuration du pipeline ANPR.
+# Toute valeur est surchargeable par une variable d'environnement ANPR_<NOM>,
+# par exemple ANPR_COUNTRIES=FR,ES ou ANPR_HASH_PLATES=true.
+
+# --- Modeles ---
+# Le detecteur de vehicules utilise les classes COCO : aucun entrainement.
+vehicle_weights: yolov8n.pt
+vehicle_confidence: 0.35
+
+# Le detecteur de plaques doit etre entraine (voir scripts/train_plate_detector.py).
+plate_weights: data/models/plate_detector.pt
+plate_confidence: 0.25
+
+# --- Lecture ---
+# Pays dont les formats de plaques sont acceptes. Ce reglage n'est pas cosmetique :
+# plusieurs pays partagent une meme longueur de plaque, et sans restriction un
+# format etranger peut l'emporter lors de la normalisation.
+countries:
+  - FR
+
+read_plates: true
+
+# Lire plusieurs pretraitements de la meme plaque et garder le meilleur.
+# Plus fiable, mais multiplie le cout de l'OCR.
+ocr_variants: true
+
+# --- Video ---
+# Lectures concordantes a accumuler avant d'emettre une plaque.
+consensus_readings: 3
+
+# --- Conformite ---
+# Remplace la plaque en clair par son empreinte HMAC dans les sorties.
+# Necessite la variable d'environnement ANPR_HASH_KEY.
+hash_plates: false
+
+# Floute les visages dans les images annotees produites.
+anonymise_faces: false

@@ -1,0 +1,19 @@
+{
+  "weights": "plate_detector.pt",
+  "split": "test",
+  "pipeline": {
+    "images_total": 120,
+    "images_with_vehicles": 26,
+    "images_plate_closeups": 94,
+    "vehicles": 47,
+    "plates_cascade": 17,
+    "plates_direct_on_scenes": 17,
+    "plates_direct_outside_vehicles": 2,
+    "plates_direct_on_closeups": 49,
+    "readings_plausible": 15,
+    "readings_with_known_format": 3,
+    "read_rate": 0.8824,
+    "known_format_rate": 0.2,
+    "direct_outside_vehicle_rate": 0.1176
+  }
+}

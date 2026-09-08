@@ -1,0 +1,41 @@
+# Environnements virtuels
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Secrets
+.env
+
+# Poids de modeles : telecharges ou entraines, jamais versionnes
+*.pt
+*.pth
+*.onnx
+data/models/
+
+# Datasets : voir docs/DATA.md pour les obtenir
+data/datasets/
+data/input/*
+!data/input/.gitkeep
+
+# Sorties et artefacts d'entrainement
+data/output/
+data/runs/
+data/mlflow/
+runs/
+mlruns/
+
+# Medias
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# OS
+.DS_Store
+Thumbs.db

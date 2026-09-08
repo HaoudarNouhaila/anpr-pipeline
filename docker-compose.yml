@@ -1,0 +1,40 @@
+# Orchestration du service ANPR : API, interface de demonstration, MLflow.
+#
+# AVERTISSEMENT : non teste, Docker n'etant pas installe sur la machine de
+# developpement. Voir l'avertissement en tete du Dockerfile.
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Sans cle, le hachage des plaques leve une erreur explicite.
+      ANPR_HASH_KEY: ${ANPR_HASH_KEY:?definir ANPR_HASH_KEY dans .env}
+      ANPR_HASH_PLATES: "true"
+      ANPR_COUNTRIES: ${ANPR_COUNTRIES:-FR}
+    volumes:
+      # Les poids restent hors de l'image : un reentrainement ne demande pas
+      # de reconstruire quoi que ce soit.
+      - ./data/models:/app/data/models:ro
+    restart: unless-stopped
+
+  demo:
+    build: .
+    command: streamlit run app/streamlit_app.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      ANPR_COUNTRIES: ${ANPR_COUNTRIES:-FR}
+    volumes:
+      - ./data/models:/app/data/models:ro
+    depends_on:
+      - api
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.16.2
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow/mlflow.db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data/mlflow:/mlflow

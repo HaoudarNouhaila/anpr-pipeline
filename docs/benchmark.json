@@ -1,0 +1,95 @@
+{
+  "images": 10,
+  "runs": 3,
+  "variants": {
+    "cascade_ocr_variants": {
+      "total": {
+        "median_ms": 2053.7,
+        "p95_ms": 7324.34,
+        "min_ms": 349.21,
+        "max_ms": 8529.55,
+        "samples": 30
+      },
+      "stages": {
+        "vehicle_detection": {
+          "median_ms": 180.77,
+          "p95_ms": 276.44,
+          "min_ms": 147.47,
+          "max_ms": 312.77,
+          "samples": 30
+        },
+        "plate_detection": {
+          "median_ms": 171.3,
+          "p95_ms": 570.54,
+          "min_ms": 77.26,
+          "max_ms": 573.62,
+          "samples": 30
+        },
+        "ocr": {
+          "median_ms": 1877.28,
+          "p95_ms": 6915.96,
+          "min_ms": 1466.47,
+          "max_ms": 7942.28,
+          "samples": 21
+        }
+      }
+    },
+    "cascade_ocr_single": {
+      "total": {
+        "median_ms": 940.66,
+        "p95_ms": 2589.65,
+        "min_ms": 322.58,
+        "max_ms": 2927.15,
+        "samples": 30
+      },
+      "stages": {
+        "vehicle_detection": {
+          "median_ms": 179.15,
+          "p95_ms": 358.46,
+          "min_ms": 145.72,
+          "max_ms": 482.78,
+          "samples": 30
+        },
+        "plate_detection": {
+          "median_ms": 167.72,
+          "p95_ms": 452.56,
+          "min_ms": 77.3,
+          "max_ms": 485.42,
+          "samples": 30
+        },
+        "ocr": {
+          "median_ms": 663.94,
+          "p95_ms": 2181.78,
+          "min_ms": 436.46,
+          "max_ms": 2296.5,
+          "samples": 21
+        }
+      }
+    },
+    "detection_only": {
+      "total": {
+        "median_ms": 349.68,
+        "p95_ms": 637.68,
+        "min_ms": 239.46,
+        "max_ms": 666.6,
+        "samples": 30
+      },
+      "stages": {
+        "vehicle_detection": {
+          "median_ms": 175.37,
+          "p95_ms": 228.18,
+          "min_ms": 146.2,
+          "max_ms": 258.69,
+          "samples": 30
+        },
+        "plate_detection": {
+          "median_ms": 173.1,
+          "p95_ms": 460.48,
+          "min_ms": 76.89,
+          "max_ms": 466.95,
+          "samples": 30
+        }
+      }
+    }
+  }
+}

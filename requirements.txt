@@ -1,0 +1,22 @@
+# Vision et modeles
+ultralytics>=8.0.0        # detection YOLO (vehicules et plaques) + ByteTrack
+opencv-python>=4.8.0      # decodage video, pretraitement, rendu
+torch>=2.0.0              # backend d'inference
+torchvision>=0.15.0       # requis par ultralytics
+easyocr>=1.7.0            # lecture du texte des plaques
+
+# Donnees et configuration
+numpy>=1.24.0
+PyYAML>=6.0
+
+# Service
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9   # requis par FastAPI pour l'upload de fichiers
+streamlit>=1.30.0         # interface de demonstration
+
+# MLOps
+mlflow>=2.10.0            # suivi des entrainements du detecteur de plaques
+
+# Tests
+pytest>=7.0.0
